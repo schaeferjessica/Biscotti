@@ -1,6 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { devices } from '../styles/breakpoints';
+
+const backgroundWidth = '92px';
+const wave = keyframes`
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: ${backgroundWidth} 0;
+  }
+`;
 
 export const NavHeader = styled.header`
   display: flex;
@@ -16,6 +26,28 @@ export const NavHeader = styled.header`
   a {
     text-decoration: none;
     text-transform: uppercase;
+    display: block;
+    position: relative;
+    padding-bottom: 10px;
+    text-align: center;
+
+    &:hover::after,
+    &:focus::after {
+      animation: 1s ${wave} linear infinite;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: ${backgroundWidth};
+      height: 8px;
+      transform: translateX(-50%);
+      background-image: url('./images/line.svg');
+      background-size: contain;
+      background-repeat: repeat-x;
+    }
   }
 
   ul {
