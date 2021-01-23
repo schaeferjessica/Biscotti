@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/layout';
 import SEO from '../components/seo';
 import Header from '../components/header';
+import Teaser from '../components/teaser';
 import Footer from '../components/footer';
 import { graphql } from 'gatsby';
 
@@ -22,6 +23,8 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO />
       <Header image={data.file.childImageSharp.fluid} />
+      <Teaser imagesLength={3} />
+      <Teaser imagesLength={4} />
       <Footer />
     </Layout>
   );

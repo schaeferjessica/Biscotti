@@ -21,7 +21,7 @@ export default createGlobalStyle`
 `;
 
 export const moduleSpace = `
-  margin-top: 150px;
+  margin-top: 180px;
 
   @media ${devices.tablet} {
     margin-top: 60px;
