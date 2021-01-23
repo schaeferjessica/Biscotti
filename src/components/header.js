@@ -67,18 +67,17 @@ export const Image = styled.div`
   }
 `;
 
-const Header = ({ image }) => {
+const Header = ({ jumpmarks, image }) => {
   return (
     <div className="container">
       <NavHeader>
         <h1>Bisc0tti</h1>
         <ul>
-          <li>
-            <a href="#id">Eis Sorten</a>
-          </li>
-          <li>
-            <a href="#id">Eis Laden</a>
-          </li>
+          {jumpmarks.map((jumpmark) => (
+            <li key={jumpmark.target}>
+              <a href={`#${jumpmark.target}`}>{jumpmark.text}</a>
+            </li>
+          ))}
         </ul>
       </NavHeader>
       <Image>

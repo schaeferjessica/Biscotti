@@ -64,20 +64,22 @@ export const NavFooter = styled.footer`
   }
 `;
 
-const Footer = () => {
+const Footer = ({ footerLinks }) => {
   return (
     <div className="container">
       <NavFooter>
         <ul>
-          <li>
-            <a
-              href="https://www.instagram.com/biscotti.eis/"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Instagram
-            </a>
-          </li>
+          {footerLinks.map((footerLink, index) => (
+            <li key={`footerlink-${index}`}>
+              <a
+                href={footerLink.link}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {footerLink.text}
+              </a>
+            </li>
+          ))}
           <li>
             <a href="#id">Impressum</a>
           </li>

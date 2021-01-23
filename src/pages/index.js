@@ -5,6 +5,8 @@ import Header from '../components/header';
 import Teaser from '../components/teaser';
 import Footer from '../components/footer';
 import { graphql } from 'gatsby';
+import useContentfulFooterlinks from '../hooks/use-footerlinks';
+import useContentfulJumpmarks from '../hooks/use-jumpmarks';
 
 export const query = graphql`
   {
@@ -19,13 +21,16 @@ export const query = graphql`
 `;
 
 const IndexPage = ({ data }) => {
+  const footerLinks = useContentfulFooterlinks();
+  const jumpmarks = useContentfulJumpmarks();
+
   return (
     <Layout>
       <SEO />
-      <Header image={data.file.childImageSharp.fluid} />
+      <Header image={data.file.childImageSharp.fluid} jumpmarks={jumpmarks} />
       <Teaser imagesLength={3} />
       <Teaser imagesLength={4} />
-      <Footer />
+      <Footer footerLinks={footerLinks} />
     </Layout>
   );
 };
