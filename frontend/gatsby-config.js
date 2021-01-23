@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require(`path`);
 
 module.exports = {
   siteMetadata: {
@@ -8,6 +9,15 @@ module.exports = {
     keywords: 'Biscotti, Eis',
   },
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { devices } from '../styles/breakpoints';
+import Img from 'gatsby-image';
 
 const backgroundWidth = '92px';
 const wave = keyframes`
@@ -17,10 +18,10 @@ export const NavHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-top: 130px;
+  margin-top: 130px;
 
   @media ${devices.mobile} {
-    padding-top: 40px;
+    margin-top: 40px;
   }
 
   a {
@@ -33,7 +34,7 @@ export const NavHeader = styled.header`
 
     &:hover::after,
     &:focus::after {
-      animation: 1s ${wave} linear infinite;
+      animation: 2s ${wave} linear infinite;
     }
 
     &::after {
@@ -60,19 +61,30 @@ export const NavHeader = styled.header`
   }
 `;
 
-const Header = () => {
+export const Image = styled.div`
+   {
+    margin-top: 130px;
+  }
+`;
+
+const Header = ({ image }) => {
   return (
-    <NavHeader className="container">
-      <h1>Bisc0tti</h1>
-      <ul>
-        <li>
-          <a href="#id">Eis Sorten</a>
-        </li>
-        <li>
-          <a href="#id">Eis Laden</a>
-        </li>
-      </ul>
-    </NavHeader>
+    <div className="container">
+      <NavHeader>
+        <h1>Bisc0tti</h1>
+        <ul>
+          <li>
+            <a href="#id">Eis Sorten</a>
+          </li>
+          <li>
+            <a href="#id">Eis Laden</a>
+          </li>
+        </ul>
+      </NavHeader>
+      <Image>
+        <Img fluid={image} alt="biscotti eis" />
+      </Image>
+    </div>
   );
 };
 
