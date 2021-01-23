@@ -67,7 +67,7 @@ export const Image = styled.div`
   }
 `;
 
-const Header = ({ jumpmarks, image }) => {
+const Header = ({ jumpmarks, media }) => {
   return (
     <div className="container">
       <NavHeader>
@@ -81,7 +81,7 @@ const Header = ({ jumpmarks, image }) => {
         </ul>
       </NavHeader>
       <Image>
-        <Img fluid={image} alt="biscotti eis" />
+        <Img fluid={media.fluid} alt={media.title} />
       </Image>
     </div>
   );
