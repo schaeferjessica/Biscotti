@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { devices } from '../styles/breakpoints';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { moduleSpace } from '../styles/container';
+import Img from 'gatsby-image';
 
 export const TeaserContainer = styled.div`
   ${moduleSpace}
@@ -14,6 +15,27 @@ export const TeaserContainer = styled.div`
 
 export const TeaserContext = styled.div`
   width: 40%;
+  margin-top: 20px;
+
+  h2:not(:first-child) {
+    margin-top: 70px;
+  }
+
+  p {
+    margin-top: 20px;
+  }
+
+  ul {
+    margin-top: 20px;
+  }
+
+  li {
+    margin-top: 10px;
+
+    p {
+      margin-top: 0;
+    }
+  }
 `;
 
 export const TeaserImage = styled.div`
@@ -22,45 +44,44 @@ export const TeaserImage = styled.div`
   align-items: center;
   justify-content: flex-end;
 
-  div {
+  > div {
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
   }
 
-  img {
-    margin: 20px;
+  .image-wrapper {
+    width: 100%;
+    padding: 20px;
   }
 `;
 
-const Teaser = ({ imagesLength }) => {
+const Teaser = ({ data }) => {
   return (
     <TeaserContainer className="container">
       <TeaserContext>
-        <h2>Eis SOrten 1.50 </h2>
-        <ul>
-          <li>
-            Schokolade Erdbeermilch Mango Lassi Zimt Zitrone Walnuss
-            karamellisiert Weißes Stracciatella mit Ingwer Vanille Stracciatella
-            Haselnusskrokant Butterkaramell mit Steinsalz Matcha-Grüner Tee
-            Schwarzer Sesam Mango mit Maracuja Vanille mit Kürbiskernöl
-          </li>
-        </ul>
-        <h2>Eis Cafe 2.00</h2>
+        {documentToReactComponents(JSON.parse(data.text))}
       </TeaserContext>
       <TeaserImage>
         <div>
-          <img src="http://satyr.io/397x327" alt="placeholder" />
-          <img src="http://satyr.io/325x325" alt="placeholder" />
+          {data.images.map(
+            (image) =>
+              image.position && (
+                <div className="image-wrapper">
+                  <Img fluid={image.image.fluid} alt={image.title} />
+                </div>
+              )
+          )}
         </div>
         <div>
-          {imagesLength === 3 ? (
-            <img src="http://satyr.io/354x383" alt="placeholder" />
-          ) : (
-            <>
-              <img src="http://satyr.io/354x383" alt="placeholder" />
-              <img src="http://satyr.io/354x383" alt="placeholder" />
-            </>
+          {data.images.map(
+            (image) =>
+              !image.position && (
+                <div className="image-wrapper">
+                  <Img fluid={image.image.fluid} alt={image.image.title} />
+                </div>
+              )
           )}
         </div>
       </TeaserImage>
