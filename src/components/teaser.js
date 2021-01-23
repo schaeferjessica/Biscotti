@@ -59,16 +59,16 @@ export const TeaserImage = styled.div`
 
 const Teaser = ({ data }) => {
   return (
-    <TeaserContainer className="container">
+    <TeaserContainer id={data.id} className="container">
       <TeaserContext>
         {documentToReactComponents(JSON.parse(data.text))}
       </TeaserContext>
       <TeaserImage>
         <div>
           {data.images.map(
-            (image) =>
+            (image, index) =>
               image.position && (
-                <div className="image-wrapper">
+                <div className="image-wrapper" key={`teaser-${index}`}>
                   <Img fluid={image.image.fluid} alt={image.title} />
                 </div>
               )
@@ -76,9 +76,9 @@ const Teaser = ({ data }) => {
         </div>
         <div>
           {data.images.map(
-            (image) =>
+            (image, index) =>
               !image.position && (
-                <div className="image-wrapper">
+                <div className="image-wrapper" key={`teaser-${index}`}>
                   <Img fluid={image.image.fluid} alt={image.image.title} />
                 </div>
               )

@@ -32,8 +32,7 @@ export const NavHeader = styled.header`
     padding-bottom: 10px;
     text-align: center;
 
-    &:hover::after,
-    &:focus::after {
+    &:hover::after {
       animation: 2s ${wave} linear infinite;
     }
 
@@ -68,6 +67,16 @@ export const Image = styled.div`
 `;
 
 const Header = ({ jumpmarks, media }) => {
+  const jumpTo = (e) => {
+    e.preventDefault();
+    const target = document.querySelector(e.target.hash);
+
+    window.scrollTo({
+      top: target.offsetTop,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <div className="container">
       <NavHeader>
@@ -75,7 +84,9 @@ const Header = ({ jumpmarks, media }) => {
         <ul>
           {jumpmarks.map((jumpmark) => (
             <li key={jumpmark.target}>
-              <a href={`#${jumpmark.target}`}>{jumpmark.text}</a>
+              <a href={`#${jumpmark.target}`} onClick={(e) => jumpTo(e)}>
+                {jumpmark.text}
+              </a>
             </li>
           ))}
         </ul>

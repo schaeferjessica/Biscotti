@@ -5,6 +5,7 @@ export const useContentfulTeasers = () => {
     query {
       allContentfulTeaser {
         nodes {
+          contentfulid
           text {
             raw
           }
@@ -23,6 +24,7 @@ export const useContentfulTeasers = () => {
   `);
 
   return data.allContentfulTeaser.nodes.map((teaser) => ({
+    id: teaser.contentfulid,
     text: teaser.text.raw,
     images: teaser.images,
   }));
