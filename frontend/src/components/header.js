@@ -4,22 +4,34 @@ import { devices } from '../styles/breakpoints';
 
 export const NavHeader = styled.header`
   display: flex;
-  justify-content: flex-end;
-  padding-top: 60px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 130px;
 
   @media ${devices.mobile} {
-    padding-top: 30px;
+    padding-top: 40px;
   }
 
   a {
     text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+  }
+
+  li {
+    margin-left: 100px;
   }
 `;
 
 const Header = () => {
   return (
     <NavHeader className="container">
-      <h1>Biscotti</h1>
+      <h1>Bisc0tti</h1>
       <ul>
         <li>
           <a href="#id">Eis Sorten</a>

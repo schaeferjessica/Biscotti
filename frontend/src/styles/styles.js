@@ -34,7 +34,15 @@ export default createGlobalStyle`
 
   h1,
   h2 {
-    font-weight: 400;
+    font-family: 'Barrio';
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  h2 {
+    font-size: 35px;
   }
 
   a {

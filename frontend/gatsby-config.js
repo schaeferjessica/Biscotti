@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: 'Biscotti',
+    title: 'BISCOTTI',
     siteUrl: `https://biscotti.netlify.app/`,
     description: `Biscotti`,
     keywords: 'Biscotti, Eis',
