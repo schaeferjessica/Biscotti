@@ -87,10 +87,6 @@ export const Image = styled.div`
   > div {
     width: 100%;
     height: 100vh;
-
-    &::after {
-      background-attachment: fixed;
-    }
   }
 `;
 
