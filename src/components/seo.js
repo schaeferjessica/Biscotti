@@ -15,8 +15,8 @@ const SEO = ({ pageTitle, pageUrl }) => {
       <meta name="generator" content="Gatsby.js" />
       <meta name="”robots" content="noodp,noydir" />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content="Angelo Puglisi" />
-      <meta property="og:site_name" content="Feinkost Umbria" />
+      <meta name="author" content="Jessica Schäfer" />
+      <meta property="og:site_name" content="Biscotti Eis" />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="article" />
       <meta property="og:url" content={siteUrl} />

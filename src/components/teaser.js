@@ -31,7 +31,7 @@ export const TeaserContext = styled.div`
   }
 
   p {
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   ul {
@@ -54,6 +54,7 @@ export const TeaserImage = styled.div`
   justify-content: flex-end;
 
   @media ${devices.mobile} {
+    ${moduleSpace};
     width: 100%;
   }
 

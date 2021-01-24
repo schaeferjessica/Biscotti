@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { devices } from '../styles/breakpoints';
+import { moduleSpace } from '../styles/container';
 
 const backgroundWidth = '92px';
 const wave = keyframes`
@@ -13,13 +14,12 @@ const wave = keyframes`
 `;
 
 export const NavFooter = styled.footer`
+  ${moduleSpace};
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  margin-top: 130px;
 
   @media ${devices.mobile} {
-    margin-top: 40px;
     justify-content: center;
   }
 
