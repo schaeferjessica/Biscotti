@@ -55,7 +55,7 @@ export const NavHeader = styled.header`
     display: flex;
 
     li:not(:first-child) {
-      margin-left: 40px;
+      margin-left: 45px;
     }
   }
 `;
@@ -65,14 +65,20 @@ export const NavContext = styled.div`
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
   background-color: ${(props) => props.color.rosa};
+
+  @media ${devices.tablet} {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .title {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin: 20px 0;
   }
 `;
 
