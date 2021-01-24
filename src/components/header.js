@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import ThemeContext from '../styles/themecontext';
+import { devices } from '../styles/breakpoints';
+import anime from 'animejs/lib/anime.es.js';
 
 const backgroundWidth = '92px';
 const wave = keyframes`
@@ -67,6 +69,12 @@ export const NavCircle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform: scale(0);
+
+  @media ${devices.mobile} {
+    width: 280px;
+    height: 280px;
+  }
 `;
 
 export const Image = styled.div`
@@ -88,7 +96,7 @@ export const Image = styled.div`
 
 const Header = ({ jumpmarks, media }) => {
   const { colors } = useContext(ThemeContext);
-
+  const headerEl = useRef(null);
   const jumpTo = (e) => {
     e.preventDefault();
     const target = document.querySelector(e.target.hash);
@@ -99,9 +107,20 @@ const Header = ({ jumpmarks, media }) => {
     });
   };
 
+  useEffect(() => {
+    const animation = anime({
+      targets: headerEl.current,
+      scale: [0, 1],
+      easing: 'easeOutExpo',
+      duration: 1800,
+      delay: 400,
+    });
+    animation.play();
+  }, []);
+
   return (
     <NavHeader className="container">
-      <NavCircle color={colors}>
+      <NavCircle color={colors} ref={headerEl}>
         <h1>Bisc0tti</h1>
         <ul>
           {jumpmarks.map((jumpmark) => (
