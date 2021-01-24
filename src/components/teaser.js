@@ -8,6 +8,8 @@ import Img from 'gatsby-image';
 export const TeaserContainer = styled.div`
   ${moduleSpace}
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   li {
     list-style: none;
@@ -47,15 +49,24 @@ export const TeaserContext = styled.div`
   }
 `;
 
-export const TeaserImage = styled.div`
+export const TeaserImageWrapper = styled.div`
   width: 60%;
+
+  @media ${devices.mobile} {
+    width: 100%;
+  }
+`;
+export const TeaserImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  margin-left: -20px;
+  margin-right: -20px;
 
   @media ${devices.mobile} {
     ${moduleSpace};
-    width: 100%;
+    margin-left: -10px;
+    margin-right: -10px;
   }
 
   > div {
@@ -89,28 +100,30 @@ const Teaser = ({ data }) => {
       <TeaserContext>
         {documentToReactComponents(JSON.parse(data.text))}
       </TeaserContext>
-      <TeaserImage>
-        <div>
-          {data.images.map(
-            (image, index) =>
-              image.position && (
-                <div className="image-wrapper" key={`teaser-${index}`}>
-                  <Img fluid={image.image.fluid} alt={image.title} />
-                </div>
-              )
-          )}
-        </div>
-        <div>
-          {data.images.map(
-            (image, index) =>
-              !image.position && (
-                <div className="image-wrapper" key={`teaser-${index}`}>
-                  <Img fluid={image.image.fluid} alt={image.image.title} />
-                </div>
-              )
-          )}
-        </div>
-      </TeaserImage>
+      <TeaserImageWrapper>
+        <TeaserImage>
+          <div>
+            {data.images.map(
+              (image, index) =>
+                image.position && (
+                  <div className="image-wrapper" key={`teaser-${index}`}>
+                    <Img fluid={image.image.fluid} alt={image.title} />
+                  </div>
+                )
+            )}
+          </div>
+          <div>
+            {data.images.map(
+              (image, index) =>
+                !image.position && (
+                  <div className="image-wrapper" key={`teaser-${index}`}>
+                    <Img fluid={image.image.fluid} alt={image.image.title} />
+                  </div>
+                )
+            )}
+          </div>
+        </TeaserImage>
+      </TeaserImageWrapper>
     </TeaserContainer>
   );
 };
