@@ -6,7 +6,10 @@ export const useContentfulHeadermedia = () => {
       contentfulHeadermedia {
         media {
           title
-          fluid(maxWidth: 1860, quality: 100) {
+          mobileImage: fluid(maxWidth: 600, quality: 100) {
+            ...GatsbyContentfulFluid_withWebp
+          }
+          desktopImage: fluid(maxWidth: 2000, quality: 100) {
             ...GatsbyContentfulFluid_withWebp
           }
         }

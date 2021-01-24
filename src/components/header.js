@@ -95,6 +95,13 @@ export const Image = styled.div`
 `;
 
 const Header = ({ jumpmarks, media }) => {
+  const sources = [
+    media.mobileImage,
+    {
+      ...media.desktopImage,
+      media: `(min-width: 768px)`,
+    },
+  ];
   const { colors } = useContext(ThemeContext);
   const headerEl = useRef(null);
   const jumpTo = (e) => {
@@ -135,7 +142,7 @@ const Header = ({ jumpmarks, media }) => {
       <Image>
         <BackgroundImage
           Tag="div"
-          fluid={media.fluid}
+          fluid={sources}
           backgroundColor={`#FFF5F5`}
         ></BackgroundImage>
       </Image>
