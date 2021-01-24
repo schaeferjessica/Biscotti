@@ -36,7 +36,7 @@ module.exports = {
         start_url: `/`,
         description: 'Biscotti Eis',
         background_color: `#EAF1F2`,
-        theme_color: `#0C3C87`,
+        theme_color: `#EAF1F2`,
         display: `standalone`,
         lang: 'de',
         icon: 'src/images/favicon.svg',
