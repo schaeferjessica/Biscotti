@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { moduleSpace } from '../styles/container';
 import { devices } from '../styles/breakpoints';
+import ThemeContext from '../styles/themecontext';
 import Img from 'gatsby-image';
 
 export const TeaserContainer = styled.div`
@@ -10,10 +11,6 @@ export const TeaserContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  li {
-    list-style: none;
-  }
 
   @media ${devices.mobile} {
     flex-direction: column;
@@ -28,23 +25,35 @@ export const TeaserContext = styled.div`
     width: 100%;
   }
 
+  h2 {
+    margin-bottom: 20px;
+  }
+
   h2:not(:first-child) {
-    margin-top: 70px;
+    margin-top: 50px;
   }
 
   p {
-    margin-top: 10px;
-  }
-
-  ul {
-    margin-top: 20px;
+    margin: 5px 0;
   }
 
   li {
-    margin-top: 10px;
+    margin: 10px 0;
+    list-style: none;
+    position: relative;
 
     p {
-      margin-top: 0;
+      margin-left: 22px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 5px;
+      height: 3px;
+      background-color: ${(props) => props.color.blue};
     }
   }
 `;
@@ -95,9 +104,10 @@ export const TeaserImage = styled.div`
 `;
 
 const Teaser = ({ data }) => {
+  const { colors } = useContext(ThemeContext);
   return (
     <TeaserContainer id={data.id} className="container">
-      <TeaserContext>
+      <TeaserContext color={colors}>
         {documentToReactComponents(JSON.parse(data.text))}
       </TeaserContext>
       <TeaserImageWrapper>
