@@ -17,11 +17,12 @@ const wave = keyframes`
 
 export const NavHeader = styled.header`
   position: relative;
+  overflow: hidden;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
+  padding-top: 20px;
 
   a {
     text-decoration: none;
@@ -49,46 +50,49 @@ export const NavHeader = styled.header`
     }
   }
 
-  h1 {
-    margin-top: 10px;
-  }
-
   ul {
     list-style: none;
+    display: flex;
+
+    li:not(:first-child) {
+      margin-left: 40px;
+    }
   }
 `;
 
-export const NavCircle = styled.div`
-  position: relative;
-  z-index: 1;
-  width: 350px;
-  height: 350px;
-  background-color: ${(props) => props.color.blueLight};
-  border-radius: 50%;
+export const NavContext = styled.div`
+  width: 100%;
+  top: 0;
+  left: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  transform: scale(0);
+  flex-direction: column;
+  background-color: ${(props) => props.color.rosa};
 
-  @media ${devices.mobile} {
-    width: 280px;
-    height: 280px;
+  .title {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
   }
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+  top: 20%;
+  opacity: 0;
+  width: 100%;
+  flex: 100%;
 `;
 
 export const Image = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   > div {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
-    @media ${devices.mobileMin} {
+    @media ${devices.tabletMin} {
       &::after {
         background-attachment: fixed;
       }
@@ -105,7 +109,8 @@ const Header = ({ jumpmarks, media }) => {
     },
   ];
   const { colors } = useContext(ThemeContext);
-  const headerEl = useRef(null);
+  const contextEl = useRef(null);
+  const imageEl = useRef(null);
   const jumpTo = (e) => {
     e.preventDefault();
     const target = document.querySelector(e.target.hash);
@@ -117,37 +122,43 @@ const Header = ({ jumpmarks, media }) => {
   };
 
   useEffect(() => {
-    const animation = anime({
-      targets: headerEl.current,
-      scale: [0, 1],
+    anime({
+      targets: imageEl.current,
+      top: ['20%', '0%'],
+      opacity: [0, 1],
       easing: 'easeOutExpo',
       duration: 1800,
       delay: 400,
-    });
-    animation.play();
+    }).play();
   }, []);
 
   return (
     <NavHeader className="container">
-      <NavCircle color={colors} ref={headerEl}>
-        <h1>Bisc0tti</h1>
-        <ul>
-          {jumpmarks.map((jumpmark) => (
-            <li key={jumpmark.target}>
-              <a href={`#${jumpmark.target}`} onClick={(e) => jumpTo(e)}>
-                {jumpmark.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </NavCircle>
-      <Image>
-        <BackgroundImage
-          Tag="div"
-          fluid={sources}
-          backgroundColor={`#FFF5F5`}
-        ></BackgroundImage>
-      </Image>
+      <NavContext color={colors} ref={contextEl}>
+        <nav>
+          <ul>
+            {jumpmarks.map((jumpmark) => (
+              <li key={jumpmark.target}>
+                <a href={`#${jumpmark.target}`} onClick={(e) => jumpTo(e)}>
+                  {jumpmark.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="title">
+          <h1>Bisc0tti</h1>
+        </div>
+      </NavContext>
+      <ImageWrapper ref={imageEl}>
+        <Image>
+          <BackgroundImage
+            Tag="div"
+            fluid={sources}
+            backgroundColor={`#FFF5F5`}
+          ></BackgroundImage>
+        </Image>
+      </ImageWrapper>
     </NavHeader>
   );
 };
