@@ -24,9 +24,7 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     color: ${(props) => props.color.blue};
     background-color: ${(props) => props.color.blueLight};
-    background: linear-gradient(180deg, #FFF5F5 0%, #EAF1F2 100%);
-    background-repeat: no-repeat;
-    min-height: 100%;
+    background-image: linear-gradient(180deg, #FFF5F5 0%, #EAF1F2 100%);
 
     @media ${devices.mobile} {
       font-size: 16px;
