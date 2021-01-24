@@ -73,6 +73,14 @@ export const TeaserImage = styled.div`
       padding: 10px;
     }
   }
+
+  img {
+    transition: transform 0.5s ease-in-out, opacity 500ms ease 0s !important;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const Teaser = ({ data }) => {

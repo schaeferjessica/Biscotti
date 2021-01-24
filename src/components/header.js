@@ -68,11 +68,17 @@ export const NavHeader = styled.header`
 `;
 
 export const Image = styled.div`
-   {
-    margin-top: 130px;
+  margin-top: 130px;
 
-    @media ${devices.mobile} {
-      margin-top: 50px;
+  @media ${devices.mobile} {
+    margin-top: 50px;
+  }
+
+  img {
+    transition: transform 0.5s ease-in-out, opacity 500ms ease 0s !important;
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 `;
