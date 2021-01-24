@@ -22,6 +22,7 @@ export const NavHeader = styled.header`
 
   @media ${devices.mobile} {
     margin-top: 40px;
+    flex-direction: column-reverse;
   }
 
   a {
@@ -57,12 +58,22 @@ export const NavHeader = styled.header`
 
   li {
     margin-left: 100px;
+
+    @media ${devices.mobile} {
+      margin-left: 25px;
+      margin-right: 25px;
+      margin-bottom: 50px;
+    }
   }
 `;
 
 export const Image = styled.div`
    {
     margin-top: 130px;
+
+    @media ${devices.mobile} {
+      margin-top: 50px;
+    }
   }
 `;
 

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { moduleSpace } from '../styles/container';
+import { devices } from '../styles/breakpoints';
 import Img from 'gatsby-image';
 
 export const TeaserContainer = styled.div`
@@ -11,11 +12,19 @@ export const TeaserContainer = styled.div`
   li {
     list-style: none;
   }
+
+  @media ${devices.mobile} {
+    flex-direction: column;
+  }
 `;
 
 export const TeaserContext = styled.div`
   width: 40%;
   margin-top: 20px;
+
+  @media ${devices.mobile} {
+    width: 100%;
+  }
 
   h2:not(:first-child) {
     margin-top: 70px;
@@ -44,6 +53,10 @@ export const TeaserImage = styled.div`
   align-items: center;
   justify-content: flex-end;
 
+  @media ${devices.mobile} {
+    width: 100%;
+  }
+
   > div {
     width: 50%;
     display: flex;
@@ -54,6 +67,10 @@ export const TeaserImage = styled.div`
   .image-wrapper {
     width: 100%;
     padding: 20px;
+
+    @media ${devices.mobile} {
+      padding: 10px;
+    }
   }
 `;
 

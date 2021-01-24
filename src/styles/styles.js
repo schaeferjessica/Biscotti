@@ -27,6 +27,7 @@ export default createGlobalStyle`
     background: linear-gradient(180deg, #FFF5F5 0%, #EAF1F2 100%);
     background-repeat: no-repeat;
     min-height: 100%;
+
     @media ${devices.mobile} {
       font-size: 16px;
     }
@@ -43,10 +44,19 @@ export default createGlobalStyle`
 
   h2 {
     font-size: 35px;
+
+    @media ${devices.mobile} {
+      font-size: 30px;
+    }
   }
 
   a {
+    font-size: 18px;
     color: ${(props) => props.color.blue};
+
+    @media ${devices.mobile} {
+      font-size: 16px;
+    }
   }
 
   .button {

@@ -20,6 +20,7 @@ export const NavFooter = styled.footer`
 
   @media ${devices.mobile} {
     margin-top: 40px;
+    justify-content: center;
   }
 
   a {
@@ -61,6 +62,11 @@ export const NavFooter = styled.footer`
 
   li {
     margin-left: 100px;
+
+    @media ${devices.mobile} {
+      margin-left: 25px;
+      margin-right: 25px;
+    }
   }
 `;
 
