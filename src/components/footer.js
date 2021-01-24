@@ -31,9 +31,8 @@ export const NavFooter = styled.footer`
     padding-bottom: 10px;
     text-align: center;
 
-    &:hover::after,
-    &:focus::after {
-      animation: 2s ${wave} linear infinite;
+    &:hover::after {
+      animation: 2.5s ${wave} linear infinite;
     }
 
     &::after {

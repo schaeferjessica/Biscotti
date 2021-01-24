@@ -6,7 +6,7 @@ export const useContentfulHeadermedia = () => {
       contentfulHeadermedia {
         media {
           title
-          fluid(maxWidth: 1860, maxHeight: 800) {
+          fluid(maxWidth: 1860, quality: 100) {
             ...GatsbyContentfulFluid_withWebp
           }
         }

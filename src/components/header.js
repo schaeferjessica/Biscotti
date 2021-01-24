@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { devices } from '../styles/breakpoints';
-import Img from 'gatsby-image';
+import BackgroundImage from 'gatsby-background-image';
+import ThemeContext from '../styles/themecontext';
 
 const backgroundWidth = '92px';
 const wave = keyframes`
@@ -14,16 +14,12 @@ const wave = keyframes`
 `;
 
 export const NavHeader = styled.header`
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  margin-top: 130px;
-
-  @media ${devices.mobile} {
-    margin-top: 40px;
-    flex-direction: column-reverse;
-  }
+  height: 100vh;
 
   a {
     text-decoration: none;
@@ -34,7 +30,7 @@ export const NavHeader = styled.header`
     text-align: center;
 
     &:hover::after {
-      animation: 2s ${wave} linear infinite;
+      animation: 2.5s ${wave} linear infinite;
     }
 
     &::after {
@@ -51,39 +47,48 @@ export const NavHeader = styled.header`
     }
   }
 
-  ul {
-    display: flex;
-    list-style: none;
+  h1 {
+    margin-top: 10px;
   }
 
-  li {
-    margin-left: 100px;
-
-    @media ${devices.mobile} {
-      margin-left: 25px;
-      margin-right: 25px;
-      margin-bottom: 50px;
-    }
+  ul {
+    list-style: none;
   }
 `;
 
+export const NavCircle = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 350px;
+  height: 350px;
+  background-color: ${(props) => props.color.blueLight};
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Image = styled.div`
-  margin-top: 130px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-  @media ${devices.mobile} {
-    margin-top: 50px;
-  }
+  > div {
+    width: 100%;
+    height: 100%;
 
-  img {
-    transition: transform 0.5s ease-in-out, opacity 500ms ease 0s !important;
-
-    &:hover {
-      transform: scale(1.1);
+    &::after {
+      background-attachment: fixed;
     }
   }
 `;
 
 const Header = ({ jumpmarks, media }) => {
+  const { colors } = useContext(ThemeContext);
+
   const jumpTo = (e) => {
     e.preventDefault();
     const target = document.querySelector(e.target.hash);
@@ -95,8 +100,8 @@ const Header = ({ jumpmarks, media }) => {
   };
 
   return (
-    <div className="container">
-      <NavHeader>
+    <NavHeader className="container">
+      <NavCircle color={colors}>
         <h1>Bisc0tti</h1>
         <ul>
           {jumpmarks.map((jumpmark) => (
@@ -107,11 +112,15 @@ const Header = ({ jumpmarks, media }) => {
             </li>
           ))}
         </ul>
-      </NavHeader>
+      </NavCircle>
       <Image>
-        <Img fluid={media.fluid} alt={media.title} />
+        <BackgroundImage
+          Tag="div"
+          fluid={media.fluid}
+          backgroundColor={`#FFF5F5`}
+        ></BackgroundImage>
       </Image>
-    </div>
+    </NavHeader>
   );
 };
 
