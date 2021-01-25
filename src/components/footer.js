@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import { moduleSpace } from '../styles/container';
 
-const backgroundWidth = '92px';
+const backgroundWidth = '105px';
 const wave = keyframes`
   from {
     background-position: 0 0;
@@ -41,7 +41,7 @@ export const NavFooter = styled.footer`
       bottom: 0;
       left: 50%;
       width: ${backgroundWidth};
-      height: 8px;
+      height: 10px;
       transform: translateX(-50%);
       background-image: url('./images/line.svg');
       background-size: contain;
@@ -60,11 +60,11 @@ export const NavFooter = styled.footer`
   }
 
   li {
-    margin-left: 100px;
+    margin-left: 60px;
 
     @media ${devices.mobile} {
-      margin-left: 25px;
-      margin-right: 25px;
+      margin-left: 20px;
+      margin-right: 20px;
     }
   }
 `;

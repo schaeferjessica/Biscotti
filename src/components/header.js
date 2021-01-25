@@ -5,7 +5,7 @@ import ThemeContext from '../styles/themecontext';
 import { devices } from '../styles/breakpoints';
 import anime from 'animejs/lib/anime.es.js';
 
-const backgroundWidth = '92px';
+const backgroundWidth = '100px';
 const wave = keyframes`
   from {
     background-position: 0 0;
@@ -42,7 +42,7 @@ export const NavHeader = styled.header`
       bottom: 0;
       left: 50%;
       width: ${backgroundWidth};
-      height: 8px;
+      height: 10px;
       transform: translateX(-50%);
       background-image: url('./images/line.svg');
       background-size: contain;
@@ -55,7 +55,18 @@ export const NavHeader = styled.header`
     display: flex;
 
     li:not(:first-child) {
-      margin-left: 45px;
+      margin-left: 60px;
+
+      @media ${devices.mobile} {
+        margin-left: 0;
+      }
+    }
+
+    li {
+      @media ${devices.mobile} {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   }
 `;

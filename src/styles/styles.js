@@ -16,10 +16,9 @@ export default createGlobalStyle`
 
 
   html {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
-    font-family: 'PT Sans', 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Spartan', 'PT Sans', 'Roboto', 'Oxygen', 'Ubuntu', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: ${(props) => props.color.blue};
@@ -27,12 +26,13 @@ export default createGlobalStyle`
     background-image: linear-gradient(180deg, #FFF5F5 0%, #EAF1F2 100%);
 
     @media ${devices.mobile} {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
   h1,
-  h2 {
+  h2,
+  h3 {
     font-family: 'Barrio';
   }
 
@@ -49,7 +49,7 @@ export default createGlobalStyle`
   }
 
   a {
-    font-size: 18px;
+    font-size: 16px;
     color: ${(props) => props.color.blue};
 
     @media ${devices.mobile} {
