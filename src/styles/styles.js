@@ -55,7 +55,7 @@ export default createGlobalStyle`
     color: ${(props) => props.color.blue};
 
     @media ${devices.mobile} {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
