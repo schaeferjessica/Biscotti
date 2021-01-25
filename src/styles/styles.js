@@ -50,35 +50,11 @@ export default createGlobalStyle`
 
   a {
     font-size: 16px;
+    text-decoration: none;
     color: ${(props) => props.color.blue};
 
     @media ${devices.mobile} {
       font-size: 16px;
-    }
-  }
-
-  .button {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 16px;
-    border: 1px solid currentColor;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    font-size: 16px;
-
-    @media ${devices.mobile} {
-      font-size: 14px;
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-top: 15px;
-      padding-bottom: 10px;
-    }
-
-    &:hover,
-    &.is-active {
-      background-color: white;
     }
   }
 
