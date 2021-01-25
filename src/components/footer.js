@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { devices } from '../styles/breakpoints';
 import { moduleSpace } from '../styles/container';
+import { Link } from 'gatsby';
 
 const backgroundWidth = '105px';
 const wave = keyframes`
@@ -86,7 +87,7 @@ const Footer = ({ footerLinks }) => {
             </li>
           ))}
           <li>
-            <a href="#id">Impressum</a>
+            <Link to="/impressum">Impressum</Link>
           </li>
         </ul>
       </NavFooter>

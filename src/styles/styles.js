@@ -24,6 +24,7 @@ export default createGlobalStyle`
     color: ${(props) => props.color.blue};
     background-color: ${(props) => props.color.blueLight};
     background-image: linear-gradient(180deg, #FFF5F5 0%, #EAF1F2 100%);
+    min-height: 100%;
 
     @media ${devices.mobile} {
       font-size: 14px;
