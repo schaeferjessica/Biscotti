@@ -7,10 +7,10 @@ import ThemeContext from '../styles/themecontext';
 import Img from 'gatsby-image';
 
 export const TeaserContainer = styled.div`
-  ${moduleSpace}
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${moduleSpace}
 
   @media ${devices.mobile} {
     flex-direction: column;
@@ -73,9 +73,9 @@ export const TeaserImage = styled.div`
   margin-right: -20px;
 
   @media ${devices.mobile} {
-    ${moduleSpace};
     margin-left: -10px;
     margin-right: -10px;
+    ${moduleSpace};
   }
 
   > div {

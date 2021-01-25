@@ -15,10 +15,10 @@ const wave = keyframes`
 `;
 
 export const NavFooter = styled.footer`
-  ${moduleSpace};
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  ${moduleSpace};
 
   @media ${devices.mobile} {
     justify-content: center;
