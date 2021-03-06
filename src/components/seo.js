@@ -13,7 +13,6 @@ const SEO = ({ pageTitle, pageUrl }) => {
       <title>{siteTitle}</title>
       <meta name="description" content={description} />
       <meta name="generator" content="Gatsby.js" />
-      <meta name="robots" content="index, follow" />
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Jessica Schäfer" />
       <meta property="og:site_name" content="Biscotti Eis" />
@@ -24,7 +23,6 @@ const SEO = ({ pageTitle, pageUrl }) => {
       <meta name="google-site-verification" content="" />
       <meta property="og:locale" content="de_DE" />
       <meta property="og:url" content={url} />
-      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <link rel="canonical" content={url}></link>
